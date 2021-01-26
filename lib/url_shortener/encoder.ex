@@ -5,7 +5,7 @@ defmodule UrlShortener.Encoder do
   alias UrlShortener.Constants
 
   @character_set Constants.base62_character_set()
-  @base String.length(@character_set)
+  @base Enum.count(@character_set)
 
   def int_to_base62(int, character_set_indices \\ [])
 
@@ -29,7 +29,9 @@ defmodule UrlShortener.Encoder do
   defp convert_indices_to_characters(remainders),
     do: Enum.map(remainders, &get_character_for_index/1)
 
-  defp get_character_for_index(index), do: String.at(@character_set, index)
+  defp get_character_for_index(index), do: Enum.at(@character_set, index)
 
-  defp flatten_to_string(character_list), do: List.to_string(character_list)
+  defp flatten_to_string(character_list) do
+    {:ok, List.to_string(character_list)}
+  end
 end
