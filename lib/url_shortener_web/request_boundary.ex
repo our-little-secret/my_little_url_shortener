@@ -9,6 +9,7 @@ defmodule UrlShortenerWeb.RequestBoundary do
 
   def validate_url(url) do
     with :ok <- validate_length(url),
+         :ok <- validate_scheme(url),
          :ok <- validate_domain(url) do
       :ok
     else
@@ -24,6 +25,21 @@ defmodule UrlShortenerWeb.RequestBoundary do
       true -> :ok
       false -> {:error, "Domain is too long."}
     end
+  end
+
+  defp validate_scheme(url) do
+    scheme = url |> URI.parse() |> Map.get(:scheme)
+    case is_scheme_http?(scheme) do
+      false ->
+        {:error, "URL scheme not accepted"}
+      true ->
+        :ok
+    end
+  end
+
+  defp is_scheme_http?(nil), do: false
+  defp is_scheme_http?(scheme) do
+    String.contains?("https", scheme)
   end
 
   defp validate_domain(url) do
