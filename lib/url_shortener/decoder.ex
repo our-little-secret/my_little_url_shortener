@@ -5,7 +5,7 @@ defmodule UrlShortener.Decoder do
   alias UrlShortener.Constants
 
   @character_set Constants.base62_character_set()
-  @base String.length(@character_set)
+  @base Enum.count(@character_set)
 
   @spec base62_to_int(String.t()) :: integer
   def base62_to_int(base62_string) do
@@ -30,7 +30,7 @@ defmodule UrlShortener.Decoder do
   # returns the character set index for an encoded character
   @spec get_base62_character_index(String.t()) :: integer
   defp get_base62_character_index(encoded_character) do
-    Enum.find_index(String.graphemes(@character_set), fn character ->
+    Enum.find_index(@character_set, fn character ->
       character == encoded_character
     end)
   end
@@ -60,5 +60,5 @@ defmodule UrlShortener.Decoder do
   defp sum_values(values), do: Enum.sum(values)
 
   @spec coerce_to_int(float) :: integer
-  defp coerce_to_int(float), do: Kernel.round(float)
+  defp coerce_to_int(float), do: {:ok, Kernel.round(float)}
 end
