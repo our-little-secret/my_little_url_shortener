@@ -29,3 +29,66 @@
 .alert:empty {
   display: none;
 }
+
+$purple: #a54eda;
+$red: #da4e4e;
+
+body {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.header-text {
+  color: $purple;
+  font-weight: 900;
+  font-size: 7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.url-text {
+  color: $purple;
+  font-weight: 900;
+  font-size: 7rem;
+  letter-spacing: 1px;
+}
+
+.submit-button {
+  background-color: $purple !important;
+  border-color: $purple !important;
+  font-size: 3rem !important;
+  height: 46px !important;
+  width: 100% !important;
+}
+
+.reset-button {
+  background-color: $purple !important;
+  border-color: $purple !important;
+}
+
+.red {
+  background-color: $red;
+  border-color: $red;
+}
+
+.button-extra-large {
+  height: 55px !important;
+  font-size: 28px;
+  padding-top: 10px;
+  font-size: 30px;
+  width: 370px;
+}
+
+label {
+  text-align: left;
+  color: $purple;
+}
+
+.error {
+  color: $red;
+}
+
+input[type="url"] {
+  height: 43px;
+  font-size: 15px;
+}
