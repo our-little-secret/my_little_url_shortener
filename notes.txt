@@ -4,6 +4,9 @@ Docker Desktop
 # Run/Use App
 docker-compose build
 docker-compose up
+
+After up, you should see DB errors in the logs, then run this:
+
 docker-compose exec web mix ecto.setup
 
 - navigate to localhost:4000
