@@ -5,5 +5,6 @@ defmodule UrlShortener.Constants do
 
   def base62_character_set do
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    |> String.graphemes()
   end
 end
