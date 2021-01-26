@@ -16,7 +16,9 @@ defmodule UrlShortenerWeb.Router do
   scope "/", UrlShortenerWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :new
+    post "/", PageController, :create_shortened_url
+    get "/:slug", PageController, :handle_redirect
   end
 
   # Other scopes may use custom stacks.
